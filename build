@@ -7,7 +7,7 @@
 #run_action "mix ecto.create"
 #run_action "mix test"
 
-mix local.hex --if-missing
+mix local.hex --if-missing --force
 mix deps.get
 mix ecto.create
 mix test
