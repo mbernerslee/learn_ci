@@ -8,8 +8,12 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt buster-pgdg main" > /etc/a
 
 RUN apt-get update
 
-RUN apt-get install postgresql-11 -y
-RUN service postgresql start
+RUN apt-get install postgresql-11 postgresql-client-11 -y
 
+USER postgres
+RUN /etc/init.d/postgresql start &&\
+    psql --command "ALTER USER postgres WITH SUPERUSER PASSWORD 'postgres';"
+
+USER root
 RUN mix local.hex --force
 RUN mix local.rebar --force
