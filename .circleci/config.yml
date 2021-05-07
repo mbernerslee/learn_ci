@@ -6,7 +6,9 @@ jobs:
   build:
     docker:
       # specify the version here
-      - image: elixir:latest
+      - image: bobrocks777/learn-ci-elixir-postgres:0.0.1
+        environment:
+          MIX_ENV: test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
