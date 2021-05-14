@@ -6,9 +6,3 @@ run_action "mix local.hex --if-missing"
 run_action "mix deps.get"
 run_action "mix ecto.create"
 run_action "mix test_from_clean_db"
-
-#mix local.hex --if-missing --force
-#mix local.rebar --force
-#mix deps.get
-#mix ecto.create
-#mix test_from_clean_db
