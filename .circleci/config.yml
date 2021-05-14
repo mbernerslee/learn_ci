@@ -29,9 +29,9 @@ jobs:
             echo $PGUSER
             echo $PGPASSWORD
       - run:
-          name: Echo postgres status
+          name: Start postgres
           command: |
-            service postgresql status
+            service postgresql start
       - run:
           name: Check postgres is up and responding
           command: |
