@@ -29,6 +29,10 @@ jobs:
             echo $PGUSER
             echo $PGPASSWORD
       - run:
+          name: Echo postgres status
+          command: |
+            service postgresql status
+      - run:
           name: Check postgres is up and responding
           command: |
             for i in `seq 1 10`;
