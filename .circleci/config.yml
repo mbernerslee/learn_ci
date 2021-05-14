@@ -25,6 +25,14 @@ jobs:
     working_directory: ~/learn_ci
     steps:
       - checkout
-
-      # specify any bash command here prefixed with `run: `
+      - run:
+          name: Wait for psql to respond
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z localhost 5432 && echo I connected to port 5432 on localhost OK && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed to connect to local postgres on port 5432 && exit 1
       - run: ./build --verbose --force-colour
