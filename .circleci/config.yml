@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       # specify the version here
-      - image: bobrocks777/learn-ci-elixir-postgres:0.0.2
+      - image: bobrocks777/learn-ci-elixir-postgres:0.0.3
         environment:
           MIX_ENV: test
           PGUSER: postgres
