@@ -24,11 +24,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Echo postgres env vars
-          command: |
-            echo $PGUSER
-            echo $PGPASSWORD
-      - run:
           name: Start postgres
           command: |
             service postgresql start
