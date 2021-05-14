@@ -9,6 +9,8 @@ jobs:
       - image: bobrocks777/learn-ci-elixir-postgres:0.0.1
         environment:
           MIX_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
           #PGUSER: postgres
           #PGPASSWORD: postgres
           #PGDATABASE: learn_ci_test
