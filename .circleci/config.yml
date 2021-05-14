@@ -26,11 +26,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Wait for psql to respond
+          name: Check postgres is up and responding
           command: |
             for i in `seq 1 10`;
             do
-              nc -z localhost 5432 && echo I connected to port 5432 on localhost OK && exit 0
+              psql -h localhost -p 5432 -U postgres -c 'select 1;' && echo "Postgres responded" && exit 0
               echo -n .
               sleep 1
             done
