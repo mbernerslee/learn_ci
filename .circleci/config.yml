@@ -9,10 +9,10 @@ jobs:
       - image: bobrocks777/learn-ci-elixir-postgres:0.0.1
         environment:
           MIX_ENV: test
-          PGUSER: postgres
-          PGPASSWORD: postgres
-          PGDATABASE: learn_ci_test
-          PGPORT: 5432
+          #PGUSER: postgres
+          #PGPASSWORD: postgres
+          #PGDATABASE: learn_ci_test
+          #PGPORT: 5432
 
 
       # Specify service dependencies here if necessary
