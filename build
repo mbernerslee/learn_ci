@@ -3,6 +3,7 @@
 . ./scripts/beautifier
 
 run_action "mix local.hex --if-missing --force"
+run_action "mix local.rebar --force"
 run_action "mix deps.get"
 run_action "mix ecto.create"
 run_action "mix test_from_clean_db"
