@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       # specify the version here
-      - image: bobrocks777/learn-ci-elixir-postgres:0.0.5
+      - image: bobrocks777/learn-ci-elixir-postgres:0.0.7
         environment:
           MIX_ENV: test
           PGUSER: postgres
@@ -14,10 +14,10 @@ jobs:
     working_directory: ~/learn_ci
     steps:
       - checkout
-      - run:
-          name: Start postgres
-          command: |
-            service postgresql restart
+        #- run:
+        #    name: Start postgres
+        #    command: |
+        #      service postgresql restart
       - run:
           name: Check postgres is up and responding
           command: |
