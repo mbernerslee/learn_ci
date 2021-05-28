@@ -14,10 +14,10 @@ jobs:
     working_directory: ~/learn_ci
     steps:
       - checkout
-        #- run:
-        #    name: Start postgres
-        #    command: |
-        #      service postgresql restart
+      - run:
+          name: Start postgres
+          command: |
+            service postgresql restart
       - run:
           name: Check postgres is up and responding
           command: |
