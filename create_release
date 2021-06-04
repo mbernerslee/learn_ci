@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. ./.secret_release.env
+
+. ./scripts/beautifier
+
+run_action "mix phx.digest"
+echo "$MIX_ENV"
+run_action "echo $MIX_ENV && mix release --overwrite --force"

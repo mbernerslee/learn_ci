@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
 config :learn_ci,
   ecto_repos: [LearnCi.Repo]

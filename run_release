@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. ./.secret_release.env
+
+sudo -E _build/prod/rel/release/bin/release start_iex
