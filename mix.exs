@@ -17,7 +17,8 @@ defmodule LearnCi.MixProject do
           applications: [runtime_tools: :permanent]
         ]
       ],
-      default_release: :release
+      default_release: :release,
+      preferred_cli_env: [test_from_clean_db: :test]
     ]
   end
 
