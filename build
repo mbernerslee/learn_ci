@@ -2,6 +2,51 @@
 
 . ./scripts/beautifier
 
+find_version_number() {
+  grep -oP -m 1 "[0-9]+\.[0-9]+\.[0-9]+" $1
+}
+
+check_elixir_version() {
+  asdf_verion_number=$(asdf current elixir 2>/dev/null | find_version_number)
+
+  if [ -z $asdf_verion_number ]
+  then
+    echo "unknown asdf elixir version number"
+  else
+    export desired_elixir_version=$asdf_verion_number
+  fi
+
+  installed_elixir_version=$(elixir -v | grep "Elixir" | find_version_number)
+
+  if [ -z $desired_elixir_version ]
+  then
+    echo "The env var 'desired_elixir_version' is not set, and could not be determined from asdf"
+    exit -1
+  else
+    if [ $installed_elixir_version == $desired_elixir_version ]
+    then
+      echo "correct elixir version installed :-)"
+    else
+      echo "Expected elixir version '$desired_elixir_version' to be installed, but I have '$installed_elixir_version"
+      exit -1
+    fi
+  fi
+}
+
+check_erlang_version() {
+  installed_erlang_verion=$(erl -eval '{ok, Version} = file:read_file(filename:join([code:root_dir(), "releases", erlang:system_info(otp_release), "OTP_VERSION"])), io:fwrite(Version), halt().' -noshell)
+  echo $installed_erlang_verion
+
+  asdf_verion_number=$(asdf current erlang 2>/dev/null | find_version_number)
+}
+
+check_tool_versions_correct() {
+  check_elixir_version
+  check_erlang_version
+  exit -1
+}
+
+run_action check_tool_versions_correct
 run_action "mix local.hex --if-missing --force"
 run_action "mix local.rebar --force"
 run_action "mix deps.get"
